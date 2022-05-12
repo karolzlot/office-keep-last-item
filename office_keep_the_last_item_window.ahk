@@ -4,6 +4,7 @@
 SendMode "Input"	; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
 
+SetTitleMatchMode(1) ; 1 = A window's title must start with the specified WinTitle to be a match.
 
 ; All translations can be found on https://www.microsoft.com/en-us/language/Search?&searchTerm=You%20placed%20a%20picture%20on%20the%20Clipboard.&langID=591&Source=true&productid=undefined
 
@@ -27,12 +28,12 @@ Loop
         Controls := WinGetControls(HWND)
         for control in Controls
         {   
-            MsgBox(control " " ControlGetText(control)) ; for debugging, comment this line if it works ok
+            MsgBox(control " " ControlGetText(control)) ; for debugging, comment out this line if it works ok
             if InStr(control, "Button") ; check if control is of type button
             {
                 if InStr(ControlGetText(control), phrase_yes)
                 {
-                    MsgBox("Button found") ; for debugging, comment this line if it works ok
+                    MsgBox("Button found") ; for debugging, comment out  this line if it works ok
                     ControlClick(control)
                     Sleep(1000)
                     break
@@ -42,6 +43,7 @@ Loop
     }
     else
     {
-        MsgBox "Not found" ; for debugging, comment this line if it works ok
+        ; MsgBox "Not found" ; for debugging, comment out this line if it works ok
+        Sleep(1000)
     }
 }
