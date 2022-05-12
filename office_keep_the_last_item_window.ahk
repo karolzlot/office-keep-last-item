@@ -34,6 +34,7 @@ Loop
                 {
                     MsgBox("Button found") ; for debugging, comment this line if it works ok
                     ControlClick(control)
+                    Sleep(1000)
                     break
                 }
             }
